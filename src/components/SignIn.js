@@ -16,7 +16,7 @@ const SignIn = () => {
   const PostData = async () => {
     setLoading(true)
     try {
-      const response = await axios.post("https://instaconnect1.herokuapp.com/signin", {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND}/signin`, {
         email,
         password,
       });

@@ -11,7 +11,7 @@ const Profile = () => {
   const { state, dispatch } = useContext(UserContext);
   useEffect(() => {
     axios
-      .get("https://instaconnect1.herokuapp.com/myposts", {
+      .get(`${process.env.REACT_APP_BACKEND}/myposts`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),
         },
@@ -37,7 +37,7 @@ const Profile = () => {
         .then(async (result) => {
           axios
             .put(
-              "https://instaconnect1.herokuapp.com/updateimage/",
+              `${process.env.REACT_APP_BACKEND}/updateimage/`,
               JSON.stringify({ image: result.data.secure_url }),
               {
                 headers: {

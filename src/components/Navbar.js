@@ -35,7 +35,7 @@ const Navbar = () => {
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
             className="btn btn-light"
-            onClick={() => {}}
+            onClick={() => { }}
           >
             <i className="bi bi-search searchIcon"></i>
           </button>
@@ -92,17 +92,17 @@ const Navbar = () => {
 
   const searchUsers = (query) => {
     setSearch(query);
-    if (query.length !== 0) {
-      axios
-        .post("https://instaconnect1.herokuapp.com/search-users", JSON.stringify({ query }), {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          setUserDetails(res.data.user);
-        });
-    }
+
+    axios
+      .post(`${process.env.REACT_APP_BACKEND}/search-users`, JSON.stringify({ query }), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        setUserDetails(res.data.user);
+      });
+
   };
 
   return (
@@ -149,7 +149,7 @@ const Navbar = () => {
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-                onClick={() => setSearch("")}
+                onClick={() => searchUsers("")}
               ></button>
             </div>
             <input
@@ -171,6 +171,7 @@ const Navbar = () => {
                 return (
                   <button
                     key={idx}
+                    data-bs-dismiss="modal"
                     onClick={() => {
                       item._id === state._id
                         ? navigate("/profile")

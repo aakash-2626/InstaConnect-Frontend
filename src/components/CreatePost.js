@@ -15,7 +15,7 @@ const CreatePost = () => {
     if (imageURL) {
       try {
         axios.post(
-          "https://instaconnect1.herokuapp.com/createpost",
+          `${process.env.REACT_APP_BACKEND}/createpost`,
           {
             title,
             body,

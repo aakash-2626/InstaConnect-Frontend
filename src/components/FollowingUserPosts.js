@@ -10,7 +10,7 @@ const FollowingUserPosts = () => {
   const { state, dispatch } = useContext(UserContext);
   useEffect(() => {
     axios
-      .get("https://instaconnect1.herokuapp.com/getMyFollowingPosts", {
+      .get(`${process.env.REACT_APP_BACKEND}/getMyFollowingPosts`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),
         },
@@ -25,7 +25,7 @@ const FollowingUserPosts = () => {
 
   const likePost = (id) => {
     axios
-      .put("https://instaconnect1.herokuapp.com/like", JSON.stringify({ postId: id }), {
+      .put(`${process.env.REACT_APP_BACKEND}/like`, JSON.stringify({ postId: id }), {
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -45,7 +45,7 @@ const FollowingUserPosts = () => {
 
   const unlikePost = (id) => {
     axios
-      .put("https://instaconnect1.herokuapp.com/unlike", JSON.stringify({ postId: id }), {
+      .put(`${process.env.REACT_APP_BACKEND}/unlike`, JSON.stringify({ postId: id }), {
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -65,7 +65,7 @@ const FollowingUserPosts = () => {
 
   const makeComment = (text, postId) => {
     axios
-      .put("https://instaconnect1.herokuapp.com/comment", JSON.stringify({ postId, text }), {
+      .put(`${process.env.REACT_APP_BACKEND}/comment`, JSON.stringify({ postId, text }), {
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -91,7 +91,7 @@ const FollowingUserPosts = () => {
 
   const deletePost = (postId) => {
     axios
-      .delete(`https://instaconnect1.herokuapp.com/deletepost/${postId}`, {
+      .delete(`${process.env.REACT_APP_BACKEND}/deletepost/${postId}`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),
         },
@@ -148,7 +148,6 @@ const FollowingUserPosts = () => {
               />
             </div>
             <div className="card-body">
-              <i className="bi bi-heart-fill" style={{ color: "red" }} />
               {item.likes.includes(state._id) ? (
                 <button
                   style={{ backgroundColor: "white", border: "0" }}

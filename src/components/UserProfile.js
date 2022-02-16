@@ -18,7 +18,7 @@ const UserProfile = () => {
       setShowFollow(true);
     }
     axios
-      .get(`https://instaconnect1.herokuapp.com/user/${userid}`, {
+      .get(`${process.env.REACT_APP_BACKEND}/user/${userid}`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),
         },
@@ -35,7 +35,7 @@ const UserProfile = () => {
   const followUser = () => {
     axios
       .put(
-        `https://instaconnect1.herokuapp.com/follow`,
+        `${process.env.REACT_APP_BACKEND}/follow`,
         JSON.stringify({ followId: userid }),
         {
           headers: {
@@ -69,7 +69,7 @@ const UserProfile = () => {
   const unfollowUser = () => {
     axios
       .put(
-        `https://instaconnect1.herokuapp.com/unfollow`,
+        `${process.env.REACT_APP_BACKEND}/unfollow`,
         JSON.stringify({ unfollowId: userid }),
         {
           headers: {

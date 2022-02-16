@@ -13,7 +13,7 @@ const SetNewPassword = () => {
   const PostData = async () => {
     setLoading(true);
     try {
-      const response = await axios.post("https://instaconnect1.herokuapp.com/new-password", {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND}/new-password`, {
         password,
         token 
       });

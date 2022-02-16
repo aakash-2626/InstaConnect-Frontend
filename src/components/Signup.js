@@ -100,7 +100,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await axios.post("https://instaconnect1.herokuapp.com/signup", {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND}/signup`, {
         name,
         email,
         password,
