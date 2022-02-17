@@ -25,7 +25,8 @@ const Routing = () => {
     if (user) {
       dispatch({ type: "USER", payload: user });
     } else {
-      if (!window.location.pathname.includes("/reset")) {
+      if (!window.location.pathname.includes("/reset") &&
+        !window.location.pathname.includes("/signup")) {
         navigate("/signin");
       }
     }
@@ -51,20 +52,20 @@ const App = () => {
   return (
     <UserContext.Provider value={{ state, dispatch }}>
       <BrowserRouter>
-      <div>
-        <ToastContainer
-          position="top-center"
-          autoClose={2000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          pauseOnFocusLoss={false}
-          rtl={false}
-          draggable
-          pauseOnHover={false}
-        />
-        <Navbar />
-        <Routing />
+        <div>
+          <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            pauseOnFocusLoss={false}
+            rtl={false}
+            draggable
+            pauseOnHover={false}
+          />
+          <Navbar />
+          <Routing />
         </div>
       </BrowserRouter>
     </UserContext.Provider>
